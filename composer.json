@@ -1,0 +1,24 @@
+{
+    "name": "rundum/event-bundle",
+    "description": "Event bundle for Symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rundum\\EventBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hendrik Pilz",
+            "email": "hepisec@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/http-kernel": "^6.3",
+        "symfony/framework-bundle": "^6.3"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.50"
+    }
+}
