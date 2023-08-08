@@ -29,7 +29,7 @@ class MakeEntityEvents extends AbstractMaker {
     }
 
     public static function getCommandDescription(): string {
-        return 'Creates CRUD events for entities';
+        return 'Creates CUD events for entities';
     }
 
     /**
@@ -70,7 +70,7 @@ class MakeEntityEvents extends AbstractMaker {
      * Called after normal code generation: allows you to do anything.
      */
     public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator) {
-
+        $generator->
     }
 
 }

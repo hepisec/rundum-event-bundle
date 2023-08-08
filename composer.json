@@ -16,7 +16,8 @@
     ],
     "require": {
         "symfony/http-kernel": "^6.3",
-        "symfony/framework-bundle": "^6.3"
+        "symfony/framework-bundle": "^6.3",
+        "doctrine/orm": "^2.16"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.50"
