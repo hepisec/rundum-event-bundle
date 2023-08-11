@@ -6,7 +6,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Psr\Log\LoggerInterface;
 use Rundum\EventBundle\Contracts\CreateEventInterface;
-use Rundum\EventBundle\Contracts\EntityEventInterface;
 use Rundum\EventBundle\Enum\EventPriority;
 use Rundum\EventBundle\Event\AbstractEntityEvent;
 use Rundum\EventBundle\Event\CreateEntityEvent;
@@ -15,6 +14,7 @@ use Rundum\EventBundle\Event\EntityCreatedEvent;
 use Rundum\EventBundle\Event\EntityDeletedEvent;
 use Rundum\EventBundle\Event\EntityUpdatedEvent;
 use Rundum\EventBundle\Event\UpdateEntityEvent;
+use Rundum\EventBundle\Exception\EntityOperationFailedException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -62,6 +62,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
      *
      * @param AbstractEntityEvent $event
      * @return void
+     * @throws EntityOperationFailedException
      */
     public function createOrUpdate(AbstractEntityEvent $event): void {
         $entity = $event->getEntity();
@@ -90,6 +91,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
             $this->logger->warning('Operation failed: ' . $ex->getMessage());
             $this->logger->warning($ex->getTraceAsString());
             $event->stopPropagation();
+            throw new EntityOperationFailedException($ex->getMessage(), $ex->getCode(), $ex);
         }
     }
 
@@ -100,6 +102,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
      *
      * @param AbstractEntityEvent $event
      * @return void
+     * @throws EntityOperationFailedException
      */
     public function delete(AbstractEntityEvent $event): void {
         $entity = $event->getEntity();
@@ -119,6 +122,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
             $this->logger->warning('Operation failed: ' . $ex->getMessage());
             $this->logger->warning($ex->getTraceAsString());
             $event->stopPropagation();
+            throw new EntityOperationFailedException($ex->getMessage(), $ex->getCode(), $ex);
         }
     }
 
