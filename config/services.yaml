@@ -1,5 +1,14 @@
 
 services:
+    rundum_event_bundle.maker.make_entity_events:
+        class: Rundum\EventBundle\Maker\MakeEntityEvents
+        autowire: true
+        arguments:
+            - '@maker.doctrine_helper'
+        tags:
+            - 'maker.command'
+
+    Rundum\EventBundle\Maker\MakeEntityEvents: '@rundum_event_bundle.maker.make_entity_events'
     # rundum_symfony_helper_bundle.data_list_service:
     #     class: Rundum\SymfonyHelperBundle\Service\DataListService
     #     autowire: false
