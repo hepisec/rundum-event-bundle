@@ -2,11 +2,11 @@
 
 namespace Rundum\EventBundle;
 
-use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * @author hendrik
  */
-class RundumEventBundle extends AbstractBundle {
+class RundumEventBundle extends Bundle {
 
 }
