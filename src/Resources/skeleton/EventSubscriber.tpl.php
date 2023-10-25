@@ -34,7 +34,7 @@ class <?= $class_name; ?> implements EventSubscriberInterface {
     }
 
     public function dispatchCreated(<?= $create_event ?> $event): void {
-        $this->dispatcher->dispatch(new <?= $created_event ?>($event->getEntity()))
+        $this->dispatcher->dispatch(new <?= $created_event ?>($event->getEntity()));
     }
 
     public function update(<?= $update_event ?> $event): void {
@@ -42,7 +42,7 @@ class <?= $class_name; ?> implements EventSubscriberInterface {
     }
 
     public function dispatchUpdated(<?= $update_event ?> $event): void {
-        $this->dispatcher->dispatch(new <?= $updated_event ?>($event->getEntity()))
+        $this->dispatcher->dispatch(new <?= $updated_event ?>($event->getEntity()));
     }
 
     public function delete(<?= $delete_event ?> $event): void {
@@ -50,6 +50,6 @@ class <?= $class_name; ?> implements EventSubscriberInterface {
     }
 
     public function dispatchDeleted(<?= $delete_event ?> $event): void {
-        $this->dispatcher->dispatch(new <?= $deleted_event ?>($event->getEntity()))
+        $this->dispatcher->dispatch(new <?= $deleted_event ?>($event->getEntity()));
     }
 }
