@@ -149,7 +149,7 @@ class MakeEntityEvents extends AbstractMaker {
             $updatedEvent->getFullName()
         ]);        
 
-        $generator->generateClass($classNameDetails->getFullName(), __DIR__ . '/../Resources/skeleton/Event.tpl.php', [
+        $generator->generateClass($classNameDetails->getFullName(), __DIR__ . '/../Resources/skeleton/EventSubscriber.tpl.php', [
             'use_statements' => $useStatements,
             'create_event' => $createEvent->getShortName(),
             'created_event' => $createdEvent->getShortName(),
