@@ -37,18 +37,11 @@ class EntityEventSubscriber implements EventSubscriberInterface {
         ];
     }
 
-    private $logger;
-    private $doctrine;
-    private $dispatcher;
-
     public function __construct(
-            LoggerInterface $logger,
-            ManagerRegistry $doctrine,
-            EventDispatcherInterface $dispatcher
+        private LoggerInterface $logger,
+        private ManagerRegistry $doctrine,
+        private EventDispatcherInterface $dispatcher
     ) {
-        $this->logger = $logger;
-        $this->doctrine = $doctrine;
-        $this->dispatcher = $dispatcher;
     }
 
     private function getEntityManager(): EntityManager {
