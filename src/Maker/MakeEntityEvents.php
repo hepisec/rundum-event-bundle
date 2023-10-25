@@ -3,6 +3,7 @@
 namespace Rundum\EventBundle\Maker;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Psr\Log\LoggerInterface;
 use Rundum\EventBundle\Enum\EventPriority;
 use Rundum\EventBundle\Event\AbstractEntityEvent;
 use Rundum\EventBundle\Enum\VerbPosition;
@@ -21,6 +22,8 @@ use Symfony\Bundle\MakerBundle\Util\UseStatementGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Question\Question;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * @author hendrik
@@ -137,6 +140,9 @@ class MakeEntityEvents extends AbstractMaker {
         );
 
         $useStatements = new UseStatementGenerator([
+            LoggerInterface::class,
+            EventDispatcherInterface::class,
+            EventSubscriberInterface::class,
             EventPriority::class,
             CreateEntityEvent::class,
             DeleteEntityEvent::class,
