@@ -14,6 +14,7 @@ services:
         class: Rundum\EventBundle\EventSubscriber\EntityEventSubscriber
         public: true
         autowire: true
+        autoconfigure: true
         arguments:
             - '@logger'
             - '@doctrine'
