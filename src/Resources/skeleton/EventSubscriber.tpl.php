@@ -9,16 +9,16 @@ class <?= $class_name; ?> implements EventSubscriberInterface {
     public static function getSubscribedEvents(): array {
         return [
             <?= $create_event ?>::getName() => [
-                ['create', EventPriority::FIRST],
-                ['dispatchCreated', EventPriority::LAST]
+                ['create', EventPriority::FIRST->value],
+                ['dispatchCreated', EventPriority::LAST->value]
             ],
             <?= $update_event ?>::getName() => [
-                ['update', EventPriority::FIRST],
-                ['dispatchUpdated', EventPriority::LAST]
+                ['update', EventPriority::FIRST->value],
+                ['dispatchUpdated', EventPriority::LAST->value]
             ],            
             <?= $delete_event ?>::getName() => [
-                ['delete', EventPriority::FIRST],
-                ['dispatchDeleted', EventPriority::LAST]
+                ['delete', EventPriority::FIRST->value],
+                ['dispatchDeleted', EventPriority::LAST->value]
             ]
         ];
     }
@@ -30,7 +30,7 @@ class <?= $class_name; ?> implements EventSubscriberInterface {
     }
 
     public function create(<?= $create_event ?> $event): void {
-        $this->dispatcher->dispatch(new CreateEntityEvent($event->getEntity(), CreateEntityEvent::getName()));
+        $this->dispatcher->dispatch(new CreateEntityEvent($event->getEntity()), CreateEntityEvent::getName());
     }
 
     public function dispatchCreated(<?= $create_event ?> $event): void {
@@ -38,7 +38,7 @@ class <?= $class_name; ?> implements EventSubscriberInterface {
     }
 
     public function update(<?= $update_event ?> $event): void {
-        $this->dispatcher->dispatch(new UpdateEntityEvent($event->getEntity(), UpdateEntityEvent::getName()));
+        $this->dispatcher->dispatch(new UpdateEntityEvent($event->getEntity()), UpdateEntityEvent::getName());
     }
 
     public function dispatchUpdated(<?= $update_event ?> $event): void {
@@ -46,7 +46,7 @@ class <?= $class_name; ?> implements EventSubscriberInterface {
     }
 
     public function delete(<?= $delete_event ?> $event): void {
-        $this->dispatcher->dispatch(new DeleteEntityEvent($event->getEntity(), DeleteEntityEvent::getName()));
+        $this->dispatcher->dispatch(new DeleteEntityEvent($event->getEntity()), DeleteEntityEvent::getName());
     }
 
     public function dispatchDeleted(<?= $delete_event ?> $event): void {
