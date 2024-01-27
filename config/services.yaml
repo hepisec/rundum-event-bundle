@@ -12,6 +12,7 @@ services:
 
     rundum_event_bundle.event_subscriber.entity_event_subscriber:
         class: Rundum\EventBundle\EventSubscriber\EntityEventSubscriber
+        public: true
         autowire: true
         arguments:
             - '@logger'
@@ -19,6 +20,8 @@ services:
             - '@event_dispatcher'
         tags:
             - 'kernel.event_subscriber'
+
+    Rundum\EventBundle\EventSubscriber\EntityEventSubscriber: '@rundum_event_bundle.event_subscriber.entity_event_subscriber'
 
 when@test:
     services:
