@@ -26,13 +26,13 @@ class EntityEventSubscriber implements EventSubscriberInterface {
     public static function getSubscribedEvents(): array {
         return [
             CreateEntityEvent::getName() => [
-                ['createOrUpdate', EventPriority::FIRST]
+                ['createOrUpdate', EventPriority::FIRST->value]
             ],
             UpdateEntityEvent::getName() => [
-                ['createOrUpdate', EventPriority::FIRST]
+                ['createOrUpdate', EventPriority::FIRST->value]
             ],            
             DeleteEntityEvent::getName() => [
-                ['delete', EventPriority::FIRST]
+                ['delete', EventPriority::FIRST->value]
             ]
         ];
     }
@@ -50,8 +50,6 @@ class EntityEventSubscriber implements EventSubscriberInterface {
 
     /**
      * Create or update an entity
-     *
-     * Dispatches EntityChangeCompletedEvent on success or EntityChangeFailedEvent on failure
      *
      * @param AbstractEntityEvent $event
      * @return void
@@ -89,9 +87,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
     }
 
     /**
-     * Remove an entity
-     *
-     * Dispatches EntityRemovalCompletedEvent on success or EntityRemovalFailedEvent on failure
+     * Delete an entity
      *
      * @param AbstractEntityEvent $event
      * @return void
