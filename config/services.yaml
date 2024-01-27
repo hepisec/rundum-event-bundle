@@ -10,6 +10,14 @@ services:
 
     Rundum\EventBundle\Maker\MakeEntityEvents: '@rundum_event_bundle.maker.make_entity_events'
 
+    rundum_event_bundle.event_subscriber.entity_event_subscriber:
+        class: Rundum\EventBundle\EventSubscriber\EntityEventSubscriber
+        autowire: true
+        arguments:
+            - '@logger'
+            - '@doctrine'
+            - '@event_dispatcher'
+
 when@test:
     services:
         rundum_event_bundle.maker.make_entity_events:
