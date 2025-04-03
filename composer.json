@@ -20,14 +20,14 @@
         }
     ],
     "require": {
-        "symfony/http-kernel": "^6.3",
-        "symfony/framework-bundle": "^6.3",
+        "symfony/http-kernel": "^6.3|^7",
+        "symfony/framework-bundle": "^6.3|^7",
         "doctrine/orm": "^2.16",
         "doctrine/doctrine-bundle": "^2.10"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.50",
-        "symfony/phpunit-bridge": "^6.3",
+        "symfony/phpunit-bridge": "^6.3|^7",
         "composer/semver": "^3.3",
         "nyholm/symfony-bundle-test": "^2.0"
     }
