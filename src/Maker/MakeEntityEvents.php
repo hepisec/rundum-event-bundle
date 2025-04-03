@@ -20,6 +20,7 @@ use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;
 use Symfony\Bundle\MakerBundle\Util\ClassNameDetails;
 use Symfony\Bundle\MakerBundle\Util\UseStatementGenerator;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -51,7 +52,9 @@ class MakeEntityEvents extends AbstractMaker {
      * to avoid that, use the $inputConfig->setArgumentAsNonInteractive() method.
      */
     public function configureCommand(Command $command, InputConfiguration $inputConfig) {
-        $command->addArgument('bound-class');
+        $command->addArgument('bound-class',  InputArgument::OPTIONAL, 'The name of Entity or fully qualified model class name that the new events will be bound to');
+
+        $inputConfig->setArgumentAsNonInteractive('bound-class');
     }
 
     public function interact(InputInterface $input, ConsoleStyle $io, Command $command): void {
